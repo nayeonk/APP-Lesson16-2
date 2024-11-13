@@ -1,0 +1,205 @@
+/* Load up a font file that is saved on my computer */
+@font-face {
+    font-family: "Skating";
+    src: url("Skating.otf");
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+/* By adding the font family to the <body>, the font will be used for all elements in the browser. */
+body {
+    font-family: "Montserrat", sans-serif;
+}
+header {
+    text-align: center;
+    background-color: wheat;
+}
+header h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-size: 40px;
+    /* <a>'s color is overriding my <h1> color property here */
+    color: red;
+    font-family: "Pacifico", cursive;
+}
+header h1 a {
+    color: red;
+    text-decoration: none;
+}
+/* <nav> is the parent to all the navigation links, so we can add display: flex to it. */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+
+    background-color: pink;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+
+    /* Make this <nav> stick to the top of the browser when user scrolls past it. */
+    position: sticky;
+    top: 0;
+    left: 0;
+    /* Recap: by default, elements that come later in the HTML code will overlap other elements with position (like moana was overlapping the nav). But we can fix the order by using z-index. By default, all elements have z-index: 0. So whoever has the higher z-index will overlap the other. */
+    z-index: 1;
+}
+nav a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+nav a:hover {
+    color: red;
+}
+
+main {
+    background-color: lightblue;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    /* Added this so that the width of the <main> will stay at 800px, even with padding. */
+    box-sizing: border-box;
+}
+
+main h2 {
+    font-family: "Skating", sans-serif;
+}
+
+.breadcrumbs a {
+    color: red;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+/* .article-container is the parent of .article and .sidebar */
+.article-container {
+    /* adding display flex here will now make he .article and .sidebar next to each other. */
+    display: flex;
+}
+.article {
+    background-color: aliceblue;
+    width: 65%;
+}
+.article img {
+    width: 100%;
+}
+.sidebar {
+    background-color: lightyellow;
+    width: 35%;
+}
+
+.shopping {
+    border-top: 1px solid black;
+}
+.shopping h3 {
+    margin-bottom: 0;
+}
+/* By setting the parent element, .shopping-row to display:flex, its children (image and text) will go right next to each other  */
+.shopping-row {
+    display: flex;
+    /* Gap adds spacing in between flex children items */
+    gap: 10px;
+    border-bottom: 1px dotted black;
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+.shopping-row img {
+   width: 100px;
+   height: 100px;
+   /* object-fit will scale the picture to fit within the width/height you give it without messing up the proportions. It will crop out the parts of the photo to fit the width/height. */
+   object-fit: cover;
+}
+.shopping-row h4 {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.shopping-row p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+footer {
+    text-align: center;
+    background-color: black;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+/* --- POSITION CSS --- */
+.relative-div {
+    background-color: blue;
+    /* Position property makes an element overlap other elements. */
+    /* position: relative positions the element from its original location. */
+    position: relative;
+    top: 190px;
+    left: 100px;
+}
+.absolute-div {
+    background-color: red;
+    /* What position: absolute does is that it positions the element in relation to the browser. */
+    position: absolute;
+    top: 100px;
+    left: 0;
+}
+.fixed-div {
+    background-color: green;
+    /* What position: fixed does is that it positions the element in relation to the browser (like absolute). But it will also follow you along as you scroll. */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 100px;
+    height: 200px;
+}
+.character {
+    width: 300px;
+	padding: 20px;
+	background-color: #FEF587;
+	margin-bottom:20px;
+
+    /* The parent has to have position: relative */
+    position: relative;
+}
+/* This means, when .character is hovered, set the .character CSS */
+.character:hover {
+    background-color: black;
+}
+
+.character img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    opacity: 1;
+}
+/* This means, when .character is hovered, set the .character's child <img> CSS */
+.character:hover img {
+    opacity: 0.7;
+}
+.character .character-name {
+    background-color: white;
+    border: 2px solid black;
+    padding: 5px;
+    text-align: center;
+    width: 100px;
+
+    /* The name is the child. It will now move in relation to its parent that has position: relative */
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    /* By default hide the character name */
+    visibility: hidden;
+}
+/* This means, when .character is hovered, set the .character's child <div class="character-name"> CSS */
+.character:hover .character-name {
+    visibility: visible;
+}
+
